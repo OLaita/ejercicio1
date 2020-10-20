@@ -1,14 +1,18 @@
 <?php 
     declare(strict_types=1);
 
-    function factorial(int $fact){
-        $ffact = 1;
-        while($fact >= 1){
-            $ffact = $fact * $ffact;
-            $fact--;
+    function factorial($fact){
+        if(is_int($fact)){
+            $ffact = 1;
+            while($fact >= 1){
+                $ffact = $fact * $ffact;
+                $fact--;
+            }
+            return $ffact;
+        }else{
+            return "Necesito un numero entero";
         }
-
-        return $ffact;
+        
     }
 
     function suma($suma){
@@ -21,22 +25,32 @@
 
     }
 
-    function primer(int $number):bool{
+    function primer($number):bool{
 
-        if ($number == 2 || $number == 3 || $number == 5 || $number == 7) {
-            return True;
-        }else {
-            if ($number %2 != 0) {
-                for ($i = 3; $i <= sqrt($number); $i += 2) {
-                    if ($number % $i == 0) {
-                        return False;
-                    }
-                }
+        if(is_int($number)){
+
+            if ($number == 2 || $number == 3 || $number == 5 || $number == 7) {
                 return True;
-            }else{
-                return False;
+            }else {
+                if ($number %2 != 0) {
+                    for ($i = 3; $i <= sqrt($number); $i += 2) {
+                        if ($number % $i == 0) {
+                            return False;
+                        }
+                    }
+                    return True;
+                }else{
+                    return False;
+                }
             }
+
+        }else{
+            echo "Necesito un numero entero";
         }
+
+        
+
+        
 
     }
 
@@ -59,11 +73,8 @@
     }
 
     $type = "prime";
-    $arguments = 12;
+    $arguments = 11;
 
     echo performOperation($type, $arguments);
-    echo var_dump(performOperation($type, $arguments));
-
-
-
+    //echo var_dump(performOperation($type, $arguments));
 ?>
