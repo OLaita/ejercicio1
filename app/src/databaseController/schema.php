@@ -28,7 +28,7 @@
                     }else{
                         $pass=$value;
                     }
-                    $command2 = "INSERT INTO usuarios (name,password) VALUES ('$user','$pass')";
+                    $command2 = "INSERT INTO users (name,password) VALUES ('$user','$pass')";
                     try{
                         $db->exec($command2);
                     }catch(PDOException $e){
@@ -43,7 +43,7 @@
     // crear usuarios 1 a 1
     function insertItems(PDO $db, string $user, string $pass){
 
-        $command2 = "INSERT INTO usuarios (name,password) VALUES ('$user','$pass')";
+        $command2 = "INSERT INTO users (name,password) VALUES ('$user','$pass')";
         try{
             $db->exec($command2);
         }catch(PDOException $e){
@@ -62,4 +62,9 @@
             die($e->getMessage());
         }
 
+    }
+
+    function tiempo(){
+        $time = getdate();
+        $time2 = $time[mday]."-".$time[mon]."-".$time[year].", ".$time[hours].":".$time[minutes].":".$time[seconds];
     }

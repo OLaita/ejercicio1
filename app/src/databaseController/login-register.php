@@ -1,42 +1,42 @@
 <?php
 
-define('APP',__DIR__);
-
-include "connect.php";
-include "schema.php";
+require 'connect.php';
+require 'schema.php';
 
 // coger mediante POST el usuario y contraseña
 $user = filter_input(INPUT_POST, "name");
 $pass = filter_input(INPUT_POST, "pass");
 
+echo $user;
+echo $pass;
+
 // Checkboxs del registro y de guardar los datos
 $reg = filter_input(INPUT_POST, "reg");
 $save = filter_input(INPUT_POST, "save");
-
-$base = connectSqlite('usuarios');
+echo $reg;
+//$base=connectSqlite('usuarios');
 
 // si el usuario o la contraseña estan vacios avisa que uno de los 2 estan vacios
 if ($user != null || $pass != null) {
-
     // ver si quiere registrarse, en caso de TRUE crea el usuario, en caso contrario mira si existe el usuario
     if(isset($reg)){
-        insertItems($base, $user, $pass);
+        echo "Hola";
+        insertItems($base, 'user2', 'user2');
         echo "USUARIO REGISTRADO";
     }else{
         // busca en la base de datos si esta el usuario con la contraseña
-        $command2 = "SELECT * FROM usuarios WHERE name='$user' AND password='$pass'";
+        $command2 = "SELECT * FROM users WHERE name='$user' AND password='$pass'";
         try{
-            $exists = $db->exec($command2);
+            $exists = $base->exec($command2);
             // en caso de que encuentre una fila despues del SELECT se da por hecho que existe dicho usuario
             if (sqlite_num_rows($exists) == 1){
                 // comprobamos si quiere guardar el usuario y la contraseña en cookies, en caso de TRUE crea las cookies, si no inicia sesion normal
                 if(isset($save)){
                     setcookie('name', $user);
                     setcookie('pass', $pass);
-                }else{
-                    echo "SESION INICIADA";
-                }                
-
+                    setcookie('time', tiempo());
+                }
+                echo "SESION INICIADA";
             }else{
                 echo "NO EXISTE EL USUARIO";
             }

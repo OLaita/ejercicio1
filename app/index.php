@@ -12,6 +12,7 @@
     //Base de datos
     $base=connectSqlite('usuarios');
     schemaGenerator($base, "users");
+    //insertItems($base, 'user1', 'user1');
 
     //sistema de enrutamiento
     $controller = getRoute();
@@ -19,3 +20,5 @@
     //redirigir a ruta adecuada
     //require controlador
     require APP.'/controllers/'.$controller.'.php';
+
+    //header("Location: profile");
