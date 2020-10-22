@@ -13,7 +13,14 @@
     
     </main>
 
+    <h3><?php echo $_SESSION['userLogged']; ?></h3>
+
+    <form action="../profile-prog.php" method="post">
     
+    Borrar las cookies: <input type="checkbox" name="delCoo"><br>
+    <input type="submit">
+    
+    </form>
 
 
 <?php

@@ -64,6 +64,25 @@
 
     }
 
+    function buscarUsuarios(PDO $db, string $user, string $pass){
+
+        $command3 = "SELECT * FROM users WHERE name=:user AND password='$pass'";
+        try{
+            $select = $db->prepare($command3);
+            $select->execute(array(':user' => $user));
+            $result = $select->fetchColumn();
+            if ($result > 0) {
+                echo "SESION INICIADA";
+                header('Location: /profile');
+            } else {
+                echo "NO EXISTE EL USUARIO";
+            }
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+
+    }
+
     function tiempo(){
         $time = getdate();
         $time2 = $time[mday]."-".$time[mon]."-".$time[year].", ".$time[hours].":".$time[minutes].":".$time[seconds];

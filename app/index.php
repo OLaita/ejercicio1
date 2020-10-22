@@ -4,8 +4,8 @@
     //configuracion entorno
     define('APP',__DIR__);
     require APP.'/src/route.php';
-    require APP.'/src/databaseController/connect.php';
-    require APP.'/src/databaseController/schema.php';
+    require 'connect.php';
+    require APP.'/src/schema.php';
 
     session_start();
 

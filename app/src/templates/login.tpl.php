@@ -1,6 +1,7 @@
 <?php
 
     include 'src/templates/header.tpl.php';
+    //include APP.'/login-register.php';
 
 ?>
 
@@ -12,10 +13,10 @@
     
     </main>
 
-    <form action="src/databaseController/login-register.php" method="post">
+    <form action="../login-register.php" method="post">
     
         Name: <input type="text" name="name"><br>
-        Password: <input type="text" name="pass"><br>
+        Password: <input type="password" name="pass"><br>
         Registrar: <input type="checkbox" name="reg"><br>
         Guardar usuario y contraseña: <input type="checkbox" name="save"><br>
         <input type="submit">
