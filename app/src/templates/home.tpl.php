@@ -1,6 +1,7 @@
 <?php
 
     include 'src/templates/header.tpl.php';
+    header("Location: login");
 
 ?>
 

@@ -21,7 +21,7 @@ if ($user != null || $pass != null) {
     // ver si quiere registrarse, en caso de TRUE crea el usuario, en caso contrario mira si existe el usuario
     if(isset($reg)){
         insertItems($base, $user, $pass);
-        $mostrar = "USUARIO REGISTRADO";
+        setcookie("mostrar", "USUARIO REGISTRADO");
         header('Location: /login');
     }else{
         if(isset($save)){
@@ -34,7 +34,7 @@ if ($user != null || $pass != null) {
         buscarUsuarios($base, $user, $pass);
     }
 } else {
-    echo "El usuario o la contraseña estan vacios";
+    setcookie("mostrar", "El usuario o la contraseña estan vacios");
     header('Location: /login');
 }
 

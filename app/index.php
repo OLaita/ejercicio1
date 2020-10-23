@@ -20,5 +20,3 @@
     //redirigir a ruta adecuada
     //require controlador
     require APP.'/controllers/'.$controller.'.php';
-
-    //header("Location: profile");

@@ -9,6 +9,7 @@
     
         <article>
             <h2>LOGIN</h2>
+            <h4><?php echo $_COOKIE['mostrar']; ?></h4>
         </article>
     
     </main>
